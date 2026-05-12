@@ -169,3 +169,24 @@ st.table(profiling_asli)
 st.subheader("Nilai Ternormalisasi 0–1 (untuk analisis)")
 profiling_scaled = df_scaled.groupby('Cluster')[features].mean().round(4)
 st.table(profiling_scaled)
+
+st.subheader("Interpretasi Klaster")
+
+tabel_interpretasi = pd.DataFrame({
+    'Cluster'     : [0, 1, 2, 3],
+    'Label'       : ['Heavy/Power User', 'Dormant/At-Risk User', 'Regular/Loyal User', 'New/Casual User'],
+    'Ciri Utama'  : [
+        'Frekuensi tinggi, recency rendah',
+        'Recency tinggi, frekuensi rendah',
+        'Frekuensi sedang, lama penggunaan tinggi',
+        'Lama penggunaan rendah, frekuensi rendah'
+    ],
+    'Keterangan'  : [
+        'Pengguna sangat aktif dan rutin transaksi',
+        'Sudah lama tidak transaksi, berisiko churn',
+        'Pengguna setia dan konsisten jangka panjang',
+        'Pengguna baru atau hanya sesekali transaksi'
+    ]
+})
+
+st.table(tabel_interpretasi)
