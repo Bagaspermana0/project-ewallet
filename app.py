@@ -161,6 +161,11 @@ st.plotly_chart(fig_plotly, use_container_width=True)
 # 12. PROFILING TIAP KLASTER (nilai ternormalisasi 0-1)
 # ==========================================
 st.header("6. Profiling Tiap Klaster")
-st.write("Nilai rata-rata per klaster (sudah ternormalisasi 0–1):")
-profiling = df_scaled.groupby('Cluster')[features].mean().round(4)
-st.dataframe(profiling)
+
+st.subheader("Nilai Asli (mudah dibaca)")
+profiling_asli = df_clean.groupby('Cluster')[features].mean().round(2)
+st.table(profiling_asli)
+
+st.subheader("Nilai Ternormalisasi 0–1 (untuk analisis)")
+profiling_scaled = df_scaled.groupby('Cluster')[features].mean().round(4)
+st.table(profiling_scaled)
